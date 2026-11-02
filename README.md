@@ -1,36 +1,71 @@
 # Folio
 
-Folio 是本地文章阅读器。文章和笔记以 Markdown 保存在你的资料库中。它支持中文、英文以及浅色、深色和跟随系统的界面。
+A local reading library for the X Articles you saved and haven't had time to read.
 
-## 安装与使用
+English · [简体中文](README.zh-CN.md)
 
-解压 macOS Apple Silicon 安装包并打开 Folio。这个预览版本未签名或公证，首次打开可能需要在系统“隐私与安全性”中允许。应用设置位于 `~/Library/Application Support/Folio`；可以在左下角选择其他资料库。
+![Folio library showing articles, topics, ratings, and reading status](docs/screenshots/library.png)
 
-## 从 X 导入
+*Screenshots use example content.*
 
-Folio 使用自己的 Chrome 扩展，不再调用 OpenCLI。扩展在后台请求 X，不创建、刷新或导航任何 X 标签页。它使用当前 Chrome 用户配置中已登录的 X 会话。首次使用请：
+Folio saves articles as Markdown on your computer. Browse and annotate them in the app, open the same folder in tools such as Obsidian or Cursor, or use your own AI tools to organize the files. Importing and reading do not require an AI API key.
 
-1. 在 Folio 中选择“导入”再选择“从 X 收藏导入”。
-2. 选择“安装扩展”，然后点击“复制文件夹路径”。在已登录 X 的 Chrome 用户配置中打开 `chrome://extensions`，开启右上角的开发者模式。
-3. 点击“加载已解压的扩展程序”。在文件夹选择窗口中按 `⌘ Shift G`，粘贴刚才复制的路径并按回车，再点击“选择”。选中的是整个 `extension` 文件夹，不是里面的文件。
-4. 回到 Folio，点击“复制配对码”。在 Chrome 工具栏点击拼图形状的扩展程序按钮，打开 Folio 扩展，粘贴配对码并连接。每次重启 Folio 后需要重新配对。
+## What you can do
 
-配对连接仅监听本机随机端口，并使用一次性密钥。Cookie 和 CSRF 值留在 Chrome。扩展只允许读取收藏及 Article；仅在用户主动选择“取消收藏”时，才向 X 发送该文章的取消收藏请求。扩展不允许任意地址或页面导航。先按收藏的原始数据识别 Article，仅请求已确定的文章；其他及无法确定的条目跳过。暂停会中断可取消的请求，已保存文章保留。
+- Import confirmed X Articles from your bookmarks without navigating or refreshing your X tabs. Short posts, videos, and unconfirmed items are skipped.
+- Browse articles by topic and reading status, rate them, and add annotations alongside the original Markdown.
+- Save article images locally. For older imports, use **Restore images** in the reader to recover images when their positions can be matched safely.
+- Choose to remove an imported article from your X bookmarks. Its local copy stays in your library.
+- Organize selected articles into topic notes and cards, and review suggested topics and reading recommendations before saving them. This optional feature uses your own model API key.
+- Use the interface in English or Chinese, with light, dark, or system appearance.
 
-**当前限制：**X 的网页接口没有公开稳定协议。X 的接口和文章标记可能变化、被拒绝或漏掉部分文章。本次新增的补图和取消收藏尚未用真实账号验证。正文转换也不保证保留所有格式、链接和嵌入媒体。失败时 Folio 会停止，不会自动回退到页面导航。用户可主动取消单篇文章在 X 的收藏，已保存的本地文章不会删除；该操作需要当前 X 账号与资料库一致。旧版扩展需要在 Chrome 扩展管理页面点击刷新。
+![Folio reader in dark mode](docs/screenshots/reader-dark.png)
 
-## 隐私
+## Get started
 
-导入及阅读不需要模型 API Key。主动选择整理文章时，所选内容会发送至你选择的模型服务商；个人批注默认不发送。AI 建议需要审阅后才保存，不能代替对原文和时效性的判断。API Key 使用系统安全存储加密。
+Folio is currently a macOS Apple Silicon preview. To build and run it from source, install Node.js 22 or later, then run:
 
-## 开发
+```sh
+npm install
+npm run build
+npm start
+```
 
-需要 Node.js 22 或更新版本。运行 `npm install`、`npm run build` 和 `npm start`。`npm run typecheck` 与 `npm test` 运行检查，`npm run package` 生成 macOS Apple Silicon 安装包。
+To build a macOS Apple Silicon zip, run `npm run package`. The preview is not signed or notarized. macOS may ask you to allow it in **Privacy & Security** on first launch.
 
-扩展的固定 GraphQL 操作和功能参数参考 OpenCLI，遵循 Apache-2.0。请参阅 `extension/README.md`。外部工具同时写入资料时应用会检测部分冲突，仍建议备份重要资料。
+Your library contains ordinary Markdown files and local image assets. Use the folder icon at the bottom of the sidebar to choose a library folder. Settings are stored in `~/Library/Application Support/Folio`.
 
-## 图片与阅读建议
+## Import X bookmarks
 
-新版导入会将 X 文章图片保存到资料库的 `assets` 文件夹。对于早期导入的文章，可先连接扩展，再在阅读器点击“补全图片”。Folio 只在正文位置可以匹配时插入图片，保留原文和批注。
+Folio uses a Chrome extension to access the X session in your chosen Chrome profile. It makes requests in the background and does not open, navigate, or refresh X tabs.
 
-选中文章后点击“整理所选”，可以审阅主题、细读建议和卡片，再选择是否保存。已有主题、星级和阅读状态会保留。
+1. Sign in to X in Chrome. In Folio, select **Import → Import X bookmarks**.
+2. Choose **Install extension**, then **Copy folder path**.
+3. Open `chrome://extensions` in the same Chrome profile and enable **Developer mode**.
+4. Click **Load unpacked**. In the folder picker, press `⌘ Shift G`, paste the copied path, and press Return. Click **Select** to load the entire `extension` folder.
+5. Return to Folio and click **Copy pairing code**. Open Folio from Chrome's extensions menu, paste the code, and click **Connect**.
+
+If the extension is already installed, choose **Already installed** at step 2. Pair it again after restarting Folio. After updating Folio, refresh the extension in `chrome://extensions`. If its folder moved, remove the old extension and load the new folder.
+
+## Use AI to organize articles
+
+In **Settings**, choose a provider, model, and API key. Select articles in the library and click **Organize selected**. Folio shows proposed topics, reading recommendations, and draft notes or cards for review before saving them.
+
+Folio sends selected article content directly to your chosen model provider when you start an AI task. Annotations are included only if you opt in. The API key is encrypted with the system's secure storage. Model output can be wrong or out of date, so check the source before relying on it.
+
+## Privacy and limitations
+
+Articles, notes, and image assets stay in your local library. Import and reading work without a model API key. The browser extension retains X cookies and CSRF values inside Chrome, and the pairing connection listens on a random local port.
+
+X's web interface is not a stable public API. Its responses can change, reject requests, or omit articles. Article conversion may not preserve every format, link, or embedded item. Image recovery only inserts images where Folio can match their position in the existing text. Bookmark removal is sent only after you choose it and the connected X account matches the library. Image recovery and bookmark removal have been tested with simulated X responses, but not yet against a real account.
+
+## Development
+
+```sh
+npm run typecheck
+npm test
+```
+
+The extension's GraphQL operations and feature flags are adapted from [OpenCLI](https://github.com/jackwener/OpenCLI) under Apache-2.0. See [the extension README](extension/README.md) for details and attribution.
+
+Folio is licensed under [Apache-2.0](LICENSE).
