@@ -5,7 +5,6 @@
 :root[data-theme=dark] .nav.active,:root[data-theme=dark] .row-selected{background:#303030!important;color:#eeeeee}
 :root[data-theme=dark] .primary{background:#e5e5e5;color:#1b1b1b;border-color:#e5e5e5}
 :root[data-theme=dark] .primary:hover{background:#ffffff}
-:root[data-theme=dark] .tags span{background:#303030;color:#bcbcbc}
 :root[data-theme=dark] .notice{background:#292929}
 :root[data-theme=dark] .notice.error{background:#382c2b;color:#e4c1bb}
 :root[data-theme=dark] .stars,:root[data-theme=dark] .author,:root[data-theme=dark] .date,:root[data-theme=dark] .status-select{color:#aaa}
@@ -32,3 +31,30 @@
 @media(max-width:1000px){.reader-toolbar{gap:4px}.reader-toolbar button{font-size:11px}}
 
 .progress-track{height:4px;background:var(--line);border-radius:4px;margin-top:10px;overflow:hidden}.progress-track span{display:block;height:100%;background:var(--text);border-radius:4px}.progress-fill{width:100%;transform-origin:left}.progress-indeterminate{width:22%;animation:import-progress 1.4s ease-in-out infinite}@keyframes import-progress{from{transform:translateX(-110%)}to{transform:translateX(460%)}}@media(prefers-reduced-motion:reduce){.progress-indeterminate{animation:none;transform:translateX(170%)}}
+
+/* Topic colors follow the label, so the same topic stays recognizable across views. */
+[data-tone="0"]{--tag-bg:#e6eef7;--tag-fg:#365a77;--tag-dot:#7a9ab4}
+[data-tone="1"]{--tag-bg:#f5e8e7;--tag-fg:#864e4d;--tag-dot:#bc8884}
+[data-tone="2"]{--tag-bg:#eeeaf7;--tag-fg:#625478;--tag-dot:#9d8db3}
+[data-tone="3"]{--tag-bg:#f6efdf;--tag-fg:#7b5d28;--tag-dot:#b79a65}
+[data-tone="4"]{--tag-bg:#e7f0e9;--tag-fg:#466650;--tag-dot:#84a18b}
+[data-tone="5"]{--tag-bg:#f7eae0;--tag-fg:#865637;--tag-dot:#c09375}
+[data-tone="6"]{--tag-bg:#e6f0ef;--tag-fg:#426766;--tag-dot:#83a4a1}
+:root[data-theme=dark] [data-tone="0"]{--tag-bg:#293b4b;--tag-fg:#c0d6e7;--tag-dot:#789ab4}
+:root[data-theme=dark] [data-tone="1"]{--tag-bg:#4a3335;--tag-fg:#e4c0be;--tag-dot:#b98684}
+:root[data-theme=dark] [data-tone="2"]{--tag-bg:#3c3549;--tag-fg:#d2c5e3;--tag-dot:#a291b8}
+:root[data-theme=dark] [data-tone="3"]{--tag-bg:#443c2c;--tag-fg:#e4d1a9;--tag-dot:#b89e70}
+:root[data-theme=dark] [data-tone="4"]{--tag-bg:#304239;--tag-fg:#c1d7c5;--tag-dot:#86a58e}
+:root[data-theme=dark] [data-tone="5"]{--tag-bg:#4b382f;--tag-fg:#e8c9b4;--tag-dot:#bd9279}
+:root[data-theme=dark] [data-tone="6"]{--tag-bg:#2c4140;--tag-fg:#bad7d3;--tag-dot:#80a5a0}
+.tags span[data-tone]{background:var(--tag-bg);color:var(--tag-fg);border-radius:5px;padding:3px 7px}
+.topic-dot[data-tone]{background:var(--tag-dot);border-color:var(--tag-dot)}
+.status-select{border-radius:6px;padding:4px 7px;max-width:100%;color:#686868;background:#ededed}
+.status-select[data-status="在读"]{background:#e6eef7;color:#365a77}
+.status-select[data-status="已读"]{background:#e7f0e9;color:#466650}
+.status-select[data-status="略过"]{background:#f6efdf;color:#7b5d28}
+:root[data-theme=dark] .status-select{background:#303030;color:#c4c4c4}
+:root[data-theme=dark] .status-select[data-status="在读"]{background:#293b4b;color:#c0d6e7}
+:root[data-theme=dark] .status-select[data-status="已读"]{background:#304239;color:#c1d7c5}
+:root[data-theme=dark] .status-select[data-status="略过"]{background:#443c2c;color:#e4d1a9}
+.list-toolbar select[aria-label="Reading recommendation"]{max-width:170px}
