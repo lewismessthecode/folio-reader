@@ -1,0 +1,8 @@
+export type Status='未读'|'在读'|'已读'|'略过';
+export interface Article {id:string;path:string;title:string;author:string;url:string;published:string;imported:string;topics:string[];rating:number;status:Status;body:string;hash:string;kind:'article'|'topic'|'card';annotations:Annotation[];suggestion?:string}
+export interface Annotation {id:string;quote:string;text:string;created:string;sourceHash:string}
+export interface Settings {provider:'openai'|'anthropic'|'deepseek';model:string;hasKey:boolean;vault:string;library:string}
+export interface Draft {id:string;title:string;body:string;kind:'topic'|'card';sources:string[]}
+export interface ImportProgress {stage:'fetching'|'scanning';scanned:number;total:number;saved:number}
+export interface API {library():Promise<{path:string;articles:Article[]}>;chooseLibrary():Promise<string|null>;importFiles():Promise<void>;saveArticle(a:Article):Promise<Article>;annotate(id:string,quote:string,text:string,hash:string):Promise<Article>;removeAnnotation(id:string,annotationId:string,hash:string):Promise<Article>;settings():Promise<Settings>;saveSettings(s:Partial<Settings>&{key?:string}):Promise<void>;importX(locale?:'zh'|'en'):Promise<{count:number;message:string;scanned?:number;skipped?:number;found?:number;paused?:boolean;hasMore?:boolean;cancelled?:boolean}>;cancelImport():Promise<void>;openWith(target:string):Promise<void>;apps():Promise<string[]>;external(url:string):Promise<void>;analyze(ids:string[],includeNotes:boolean,focus:string):Promise<Draft[]>;saveDrafts(drafts:Draft[]):Promise<void>;onChanged(cb:()=>void):()=>void;onProgress(cb:(progress:ImportProgress|null)=>void):()=>void;}
+declare global {interface Window {reader:API}}

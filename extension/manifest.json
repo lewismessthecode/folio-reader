@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Folio Reader Bridge",
+  "version": "0.1.0",
+  "description": "Read X bookmarks for Folio without navigating your tabs",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAssOVd19k4kvC2npFbQdiLC37SBC25KkoB6Cw4rlo8cttLyppTsUmA7xqnsJUT7LXpkxPlEnuh72A3wApRRXh160JaNA6B9UbcH2pPgP52OJLYiPJU2tQpgW1FZN8ifEgtUfuvliueZ2Kc1ral539alvTbGTNlZWwWfasxgI2ebq1l+TENheqf0nxwlFuVX+B5VeBtdHLau2IM5xoWaUCsg/WpOmIcrGyR0l95l//I6AfmgfyXkZCqZyLBGUQ57qFEAYeBLWSZZnIc67U9l9BI2LFHzaRhqChdALb6e4YCUgMKcgJFu/YhmMgmN4zL3uZ9nw2sPyCUoTmOwtkr2isQwIDAQAB",
+  "permissions": [
+    "cookies",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://x.com/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "worker.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Folio"
+  }
+}

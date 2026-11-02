@@ -1,0 +1,4 @@
+import {contextBridge,ipcRenderer} from 'electron';
+const call=(name:string)=>(...args:unknown[])=>ipcRenderer.invoke(name,...args);
+const on=(event:string)=>(cb:(...args:any[])=>void)=>{const handler=(_:unknown,...args:unknown[])=>cb(...args);ipcRenderer.on(event,handler);return()=>ipcRenderer.removeListener(event,handler);};
+contextBridge.exposeInMainWorld('reader',{library:call('library'),chooseLibrary:call('chooseLibrary'),importFiles:call('importFiles'),saveArticle:call('saveArticle'),annotate:call('annotate'),removeAnnotation:call('removeAnnotation'),settings:call('settings'),saveSettings:call('saveSettings'),importX:call('importX'),cancelImport:call('cancelImport'),openWith:call('openWith'),apps:call('apps'),external:call('external'),analyze:call('analyze'),saveDrafts:call('saveDrafts'),onChanged:on('changed'),onProgress:on('progress')});
