@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#152033"/>
+      <stop offset="1" stop-color="#070b12"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="0.48" cy="0.34" r="0.68">
+      <stop offset="0" stop-color="#6b93e8" stop-opacity="0.38"/>
+      <stop offset="0.55" stop-color="#3d68c4" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#3d68c4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.30"/>
+      <stop offset="0.45" stop-color="#fff" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#9bb7ef" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pageFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef3fb"/>
+      <stop offset="1" stop-color="#d5e0f2"/>
+    </linearGradient>
+    <linearGradient id="pageMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c4d2ea"/>
+      <stop offset="1" stop-color="#9eb4d8"/>
+    </linearGradient>
+    <linearGradient id="pageBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7f97c4"/>
+      <stop offset="1" stop-color="#5a74a8"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9ec0ff"/>
+      <stop offset="1" stop-color="#4f78d8"/>
+    </linearGradient>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <filter id="drop" x="-30%" y="-30%" width="160%" height="170%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <clipPath id="shape"><rect x="100" y="100" width="824" height="824" rx="188"/></clipPath>
+  </defs>
+
+  <rect x="100" y="124" width="824" height="824" rx="188" fill="#000" fill-opacity="0.40" filter="url(#shadow)"/>
+  <rect x="100" y="100" width="824" height="824" rx="188" fill="url(#bg)"/>
+  <g clip-path="url(#shape)">
+    <rect x="100" y="100" width="824" height="824" fill="url(#aura)"/>
+    <rect x="100" y="100" width="824" height="420" fill="url(#gloss)"/>
+    <rect x="100" y="100" width="824" height="824" filter="url(#grain)" opacity="0.045"/>
+  </g>
+
+  <!-- back page -->
+  <rect x="292" y="250" width="440" height="500" rx="36" fill="url(#pageBack)" opacity="0.85" transform="rotate(-7 512 500)"/>
+  <!-- mid page -->
+  <rect x="292" y="268" width="440" height="500" rx="36" fill="url(#pageMid)" opacity="0.95" transform="rotate(4 512 518)"/>
+  <!-- front page -->
+  <rect x="286" y="286" width="452" height="520" rx="40" fill="#000" fill-opacity="0.35" filter="url(#drop)" transform="translate(0 10)"/>
+  <rect x="286" y="286" width="452" height="520" rx="40" fill="url(#pageFront)"/>
+  <rect x="286" y="286" width="452" height="520" rx="40" fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="2.5"/>
+
+  <!-- text lines -->
+  <rect x="348" y="370" width="210" height="26" rx="13" fill="#1d2b45" fill-opacity="0.88"/>
+  <rect x="348" y="430" width="328" height="18" rx="9" fill="#3a4f73" fill-opacity="0.55"/>
+  <rect x="348" y="474" width="300" height="18" rx="9" fill="#3a4f73" fill-opacity="0.45"/>
+  <rect x="348" y="518" width="250" height="18" rx="9" fill="#3a4f73" fill-opacity="0.38"/>
+  <rect x="348" y="562" width="280" height="18" rx="9" fill="#3a4f73" fill-opacity="0.30"/>
+  <!-- accent bookmark -->
+  <rect x="686" y="286" width="28" height="118" rx="8" fill="url(#mark)"/>
+  <path d="M686 404 L700 428 L714 404 Z" fill="url(#mark)"/>
+
+  <rect x="101.5" y="101.5" width="821" height="821" rx="186.5" fill="none" stroke="url(#rim)" stroke-width="3"/>
+</svg>

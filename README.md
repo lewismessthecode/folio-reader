@@ -1,4 +1,4 @@
-# Folio
+# <img src="docs/icon.png" alt="Folio" width="48" height="48" align="absmiddle"> Folio
 
 A local reading library for the X Articles you saved and haven't had time to read.
 

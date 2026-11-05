@@ -1,4 +1,4 @@
-# Folio
+# <img src="docs/icon.png" alt="Folio" width="48" height="48" align="absmiddle"> Folio
 
 [English](README.md) · 简体中文
 
